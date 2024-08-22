@@ -1,0 +1,14 @@
+# komodo-user 14 AD1A.240530.047 12143574 release-keys
+- manufacturer: google
+- platform: zumapro
+- codename: komodo
+- flavor: komodo-user
+- release: 14
+- id: AD1A.240530.047
+- incremental: 12143574
+- tags: release-keys
+- fingerprint: google/komodo/komodo:14/AD1A.240530.047/12143574:user/release-keys
+- is_ab: true
+- brand: google
+- branch: komodo-user-14-AD1A.240530.047-12143574-release-keys
+- repo: google_komodo_dump
