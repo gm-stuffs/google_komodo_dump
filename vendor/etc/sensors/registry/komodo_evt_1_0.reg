@@ -1,0 +1,128 @@
+#
+# Komodo sensor device configuration registry script for the EVT 1.0 stage.
+#
+# Source of truth: go/pixel-sensor-list
+#
+
+#
+# CDT Filter <CDT>:<mask>
+# CDT format: <0xPPPPSJIV> (P:Product, S:Stage, J:Major, I:Minor, V:Variant)
+# go/pixel-cdt-zuma
+# go/pixel-cdt-zuma-pro
+#
+
+?+0x83100:0xFFFFFFF0
+# Exclude
+?-0x83102 0x83103     # EVT 1.0 mag DOE (MLB)
+
+#
+# Record reg_script.
+#
+
++/
+reg_script=komodo_evt_1_0.reg
+
+#
+# Sensors
+#
+
+# MAG 1 (MMC5616WA)
++/dev/mmc5616/0
+  bus_name=i3c1
+  bus_freq_hz=400000
+  i3c_freq_hz=6250000
+  bus_addr=0x30
+  i3c_addr=0x14
+  priority=0
++/dev/mmc5616/0/mag
+  orientation_transform=-1 2 -3
+  name=MMC5616 Magnetometer 0
+  fac_cal_transform=1.0131 0.0989 0.0141 0.0403 0.9170 -0.0266 0.0165 0.1069 0.9975 0.0 0.0 0.0
+  curr_comp_factors=4.53 -1.44 3.36
+  curr_comp_factors_fast=1.31 -0.43 0.64
+
+# MAG 2 (MMC5616WA)
++/dev/mmc5616/1
+  bus_name=i2c0
+  bus_freq_hz=400000
+  bus_addr=0x30
+  priority=1
++/dev/mmc5616/1/mag
+  orientation_transform=1 2 3
+  name=MMC5616 Magnetometer 1
+  fac_cal_transform=0.9766 0.0490 -0.0242 0.0262 0.9361 0.0324 0.0276 -0.0548 1.0131 0.0 0.0 0.0
+
+# ALSP (TMD3733)
++/dev/tmd3733/0
+  vsync_delay_ns=574770
+
++/dev/tmd3733/0/als
+  lux_scale=4.31935
+  c_coef=1
+  r_coef=-0.82279221
+  g_coef=0.49261751
+  b_coef=-0.6698253
+  itime_table_brightness=587 901 1115 2565 3271 4096
+  itime_table=1600000 1500000 300000 300000 300000 1600000
+  # Step-size (in EM slots) for each rotation.
+  rotation_step_size=1
+
+  clear_gain12_ratio=0.0625
+  red_gain12_ratio=0.0625
+  green_gain12_ratio=0.0625
+  blue_gain12_ratio=0.0625
+
+  clear_gain11_ratio=0.125
+  red_gain11_ratio=0.125
+  green_gain11_ratio=0.125
+  blue_gain11_ratio=0.125
+
+  clear_gain10_ratio=0.25
+  red_gain10_ratio=0.25
+  green_gain10_ratio=0.25
+  blue_gain10_ratio=0.25
+
+  clear_gain9_ratio=0.5
+  red_gain9_ratio=0.5
+  green_gain9_ratio=0.5
+  blue_gain9_ratio=0.5
+
+  clear_gain8_ratio=1.0
+  red_gain8_ratio=1.0
+  green_gain8_ratio=1.0
+  blue_gain8_ratio=1.0
+
+  clear_gain7_ratio=2.0
+  red_gain7_ratio=2.0
+  green_gain7_ratio=2.0
+  blue_gain7_ratio=2.0
+
+  clear_gain6_ratio=4.0
+  red_gain6_ratio=4.0
+  green_gain6_ratio=4.0
+  blue_gain6_ratio=4.0
+
++/dev/tmd3733/0/prox
+  pulse_count=4
+  vcsel_ma=10
+  far_threshold=15
+  near_threshold=45
+  pulse_len_us=128
+  filter_len=4
+  skip_count=0
+  pdata_scale=1.0
+  gain1=8
+  gain2=2.5
+
+# RAINBOW (VD6282)
++/dev/vd6282/0/spectral
+  # Golden values for calibration.
+  golden_rals_r=980.468983
+  golden_rals_g=1131.066492
+  golden_rals_b=281.964583
+  golden_rals_clr1=5043.331804
+  golden_rals_ir=3023.216255
+  golden_rals_clr2=5011.803346
+
++/dev/vd6282/0/rls
+  lux_scale=108.314905
