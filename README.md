@@ -1,0 +1,14 @@
+# komodo-user 15 AP4A.241205.013 12621605 release-keys
+- manufacturer: google
+- platform: zumapro
+- codename: komodo
+- flavor: komodo-user
+- release: 15
+- id: AP4A.241205.013
+- incremental: 12621605
+- tags: release-keys
+- fingerprint: google/komodo/komodo:15/AP4A.241205.013/12621605:user/release-keys
+- is_ab: true
+- brand: google
+- branch: komodo-user-15-AP4A.241205.013-12621605-release-keys
+- repo: google_komodo_dump
