@@ -1,0 +1,14 @@
+# komodo-user 15 AP4A.250205.002 12821496 release-keys
+- manufacturer: google
+- platform: zumapro
+- codename: komodo
+- flavor: komodo-user
+- release: 15
+- id: AP4A.250205.002
+- incremental: 12821496
+- tags: release-keys
+- fingerprint: google/komodo/komodo:15/AP4A.250205.002/12821496:user/release-keys
+- is_ab: true
+- brand: google
+- branch: komodo-user-15-AP4A.250205.002-12821496-release-keys
+- repo: google_komodo_dump
