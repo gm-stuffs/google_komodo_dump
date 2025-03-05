@@ -1,0 +1,114 @@
+#
+# Komodo sensor device configuration registry script.
+#
+# Source of truth: go/pixel-sensor-list
+#
+
+#
+# CDT Filter <CDT>:<mask>
+# CDT format: <0xPPPPSJIV> (P:Product, S:Stage, J:Major, I:Minor, V:Variant)
+# go/pixel-cdt-zuma
+# go/pixel-cdt-zuma-pro
+#
+
+?+0x80000:0xFFFF0000
+# Exclude
+?-0x82000:0xFFFFF000  # Proto
+?-0x83000:0xFFFFF000  # EVT
+
+#
+# Record reg_script.
+#
+
++/
+reg_script=komodo_dvt.reg
+
+#
+# Sensors
+#
+
+# MAG (MMC5616WA)
++/dev/mmc5616/0
+  bus_name=i3c1
+  bus_freq_hz=400000
+  i3c_freq_hz=6250000
+  bus_addr=0x30
+  i3c_addr=0x14
++/dev/mmc5616/0/mag
+  orientation_transform=-1 2 -3
+  fac_cal_transform=1.0243 0.0378 -0.0013 0.0474 0.9125 0.0555 0.0029 0.0207 0.9987 0 0 0
+  curr_comp_factors=4.53 -1.44 3.36
+  curr_comp_factors_fast=1.31 -0.43 0.64
+
+# ALSP (TMD3733)
++/dev/tmd3733/0
+  vsync_delay_ns=600000
+
++/dev/tmd3733/0/als
+  lux_scale=5.1
+  c_coef=1
+  r_coef=-0.82279221
+  g_coef=0.49261751
+  b_coef=-0.6698253
+  itime_table_brightness=587 901 1115 2565 3271 4096
+  itime_table=1600000 1500000 300000 300000 300000 1600000
+
+  clear_gain12_ratio=0.0625
+  red_gain12_ratio=0.0625
+  green_gain12_ratio=0.0625
+  blue_gain12_ratio=0.0625
+
+  clear_gain11_ratio=0.1247
+  red_gain11_ratio=0.1248
+  green_gain11_ratio=0.1255
+  blue_gain11_ratio=0.1248
+
+  clear_gain10_ratio=0.2503
+  red_gain10_ratio=0.2502
+  green_gain10_ratio=0.2507
+  blue_gain10_ratio=0.2503
+
+  clear_gain9_ratio=0.5004
+  red_gain9_ratio=0.5003
+  green_gain9_ratio=0.5005
+  blue_gain9_ratio=0.5003
+
+  clear_gain8_ratio=1.0
+  red_gain8_ratio=1.0
+  green_gain8_ratio=1.0
+  blue_gain8_ratio=1.0
+
+  clear_gain7_ratio=1.9966
+  red_gain7_ratio=1.9976
+  green_gain7_ratio=1.9968
+  blue_gain7_ratio=1.9977
+
+  clear_gain6_ratio=3.9876
+  red_gain6_ratio=3.9908
+  green_gain6_ratio=3.9884
+  blue_gain6_ratio=3.9902
+
++/dev/tmd3733/0/prox
+  pulse_count=4
+  vcsel_ma=10
+  far_threshold=40
+  near_threshold=90
+  pulse_len_us=128
+  filter_len=4
+  skip_count=0
+  pdata_scale=1.85
+  gain1=8
+  gain2=2.5
+
+# RAINBOW (VD6282)
++/dev/vd6282/0/spectral
+  # Golden values for calibration.
+  golden_rals_r=1018.270104
+  golden_rals_g=1170.207177
+  golden_rals_b=285.439347
+  golden_rals_clr1=5199.153853
+  golden_rals_ir=3033.763340
+  golden_rals_clr2=5257.567594
+
++/dev/vd6282/0/rls
+  lux_scale=104.797033
