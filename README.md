@@ -1,0 +1,14 @@
+# komodo-user 15 BP1A.250305.020.A2 13038733 release-keys
+- manufacturer: google
+- platform: zumapro
+- codename: komodo
+- flavor: komodo-user
+- release: 15
+- id: BP1A.250305.020.A2
+- incremental: 13038733
+- tags: release-keys
+- fingerprint: google/komodo/komodo:15/BP1A.250305.020.A2/13038733:user/release-keys
+- is_ab: true
+- brand: google
+- branch: komodo-user-15-BP1A.250305.020.A2-13038733-release-keys
+- repo: google_komodo_dump
